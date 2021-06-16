@@ -1,0 +1,22 @@
+Function GetSecondUpper(xStr) As Integer
+    Dim I As Integer
+    GetSecondUpper = -1
+    dem = 0
+    For I = 1 To Len(xStr)
+        If (Asc(Mid(xStr, I, 1)) < 91) And (Asc(Mid(xStr, I, 1)) > 64) Then
+            If (dem < 2) Then
+                GetSecondUpper = I
+                dem = dem + 1
+            Else
+                Exit Function
+            End If
+        End If
+    Next
+End Function
+
+Function res_string(str)
+    Dim x As Variant
+    x = Split(str, "sn")
+    second_pos = GetSecondUpper(x(0))
+    res_string = Right(x(0), Len(x(0)) - second_pos + 1)
+End Function
